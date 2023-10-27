@@ -1,0 +1,19 @@
+package com.hms.te;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.te.hrms.repository.AppUserRepository;
+import com.te.hrms.repository.RoleRespository;
+
+import lombok.RequiredArgsConstructor;
+
+@SpringBootApplication
+@RequiredArgsConstructor
+public class HrManagementSystemApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(HrManagementSystemApplication.class, args);
+	}
+
+}

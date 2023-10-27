@@ -1,0 +1,10 @@
+package com.hms.te.service;
+
+
+
+public interface EmployeeService {
+
+	Optional<String> registerEmployee(EmployeeDto employeeDto);
+	
+}
+

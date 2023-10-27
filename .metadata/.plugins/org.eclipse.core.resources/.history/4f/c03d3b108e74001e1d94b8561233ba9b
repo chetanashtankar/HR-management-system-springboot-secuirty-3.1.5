@@ -1,0 +1,7 @@
+package com.hms.te.constant;
+
+public class EmployeeConstant {
+
+	
+	public static final String EXCEPTIONHANDLE="";
+}

@@ -1,0 +1,9 @@
+package com.hms.te.exception;
+
+public class EmployeeException extends RuntimeException{
+
+	public EmployeeException(String message) {
+		
+		
+	}
+}

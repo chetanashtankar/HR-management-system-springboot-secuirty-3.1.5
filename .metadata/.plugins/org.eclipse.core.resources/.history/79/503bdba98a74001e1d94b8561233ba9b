@@ -1,0 +1,6 @@
+package com.hms.te.enums;
+
+public enum LeaveRequestEnums {
+
+	PENDING , APPROVED ,REJECTED
+}

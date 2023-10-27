@@ -1,0 +1,30 @@
+package com.hms.te.entity;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+@Table(name = "perfomance_tbl")
+@Entity
+public class Performance_Review {
+
+	@Id
+	private int employeeReviewId;
+	private LocalDate employeeReviewDate;
+	private String employeeReviewName;
+	private String employeeReviewerComments;
+	private double employeeRating;
+
+}

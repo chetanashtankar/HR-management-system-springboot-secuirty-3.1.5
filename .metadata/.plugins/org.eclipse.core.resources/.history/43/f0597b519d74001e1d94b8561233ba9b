@@ -1,0 +1,12 @@
+package com.hms.te.dto;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Builder
+public class LoginDTO {
+
+	private String username;
+	private String password;
+}

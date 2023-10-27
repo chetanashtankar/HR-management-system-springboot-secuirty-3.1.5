@@ -1,0 +1,12 @@
+package com.hms.te.exceptionhandle;
+
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.hms.te.response.ErrorResponse;
+
+@RestControllerAdvice
+public class EmployeeExceptionHandle {
+
+	
+	
+}

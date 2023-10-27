@@ -1,0 +1,84 @@
+package com.hms.te.controller;
+
+public class Extra {
+
+	@PostMapping("/")
+	public ResponseEntity<SuccessResponse> addEmployee(@RequestBody EmployeeDTO employeeDTO) {
+	    Optional<String> result = employeeService.registerEmployee(employeeDTO);
+	    
+	    if (result.isPresent()) {
+	        return ResponseEntity.<SuccessResponse>ok(SuccessResponse.builder()
+	                .data(result.get())
+	                .message("Employee created successfully")
+	                .timesStamp(LocalDateTime.now())
+	                .build());
+	    } else {
+	        return ResponseEntity.<SuccessResponse>badRequest()
+	                .body(SuccessResponse.builder()
+	                        .message("Failed to create employee")
+	                        .timesStamp(LocalDateTime.now())
+	                        .build());
+	    }
+	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity<SuccessResponse> updateEmployee(@PathVariable String id, @RequestBody EmployeeDTO employeeDTO) {
+	    Optional<Employee> existingEmployee = employeeService.getEmployee(id);
+	    
+	    if (existingEmployee.isPresent()) {
+	        // Update the existing employee with the new data
+	        Employee updatedEmployee = employeeService.updateEmployee(id, employeeDTO);
+	        
+	        return ResponseEntity.<SuccessResponse>ok()
+	                .body(SuccessResponse.builder()
+	                        .data(updatedEmployee)
+	                        .message("Employee updated successfully")
+	                        .timesStamp(LocalDateTime.now())
+	                        .build());
+	    } else {
+	        return ResponseEntity.<SuccessResponse>notFound()
+	                .body(SuccessResponse.builder()
+	                        .message("Employee not found")
+	                        .timesStamp(LocalDateTime.now())
+	                        .build());
+	    }
+	}
+
+}
+
+
+public interface EmployeeService {
+
+    Optional<String> registerEmployee(EmployeeDTO employeeDTO);
+
+    List<Employee> getEmployees();
+
+    Optional<Employee> getEmployee(String id);
+    
+    List<Employee> saveEmployees();
+    
+    List<Employee> saveEmployees(EmployeeDTO employeeDTO);
+
+    // New method to update an existing employee
+    Employee updateEmployee(String id, EmployeeDTO employeeDTO);
+}
+@Override
+public Employee updateEmployee(String id, EmployeeDTO employeeDTO) {
+    // Fetch the existing employee
+    Optional<Employee> existingEmployee = employeeRepository.findById(id);
+
+    if (existingEmployee.isPresent()) {
+        Employee employee = existingEmployee.get();
+        // Update the employee's data using the values from employeeDTO
+        // You need to write the update logic based on your requirements
+
+        // Save the updated employee
+        return employeeRepository.save(employee);
+    } else {
+        throw new RuntimeException("Employee not found");
+    }
+}
+
+
+
+

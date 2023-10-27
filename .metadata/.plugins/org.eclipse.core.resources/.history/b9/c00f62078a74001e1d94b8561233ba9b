@@ -1,0 +1,32 @@
+package com.hms.te.entity;
+
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+/*
+ *Employee Table:*
+   - Attributes: Employee ID, First Name, Last Name, Email, Contact Number, Joining Date, Department, Designation.
+   - API endpoints for CRUD operations.
+ */
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+@Entity
+public class Employee {
+
+	private int employeeId;
+	private String employeeFirstName;
+	private String employeeLastName;
+	private String employeeEmailis;
+	private long employeeContactNumber;
+	
+	
+	
+}

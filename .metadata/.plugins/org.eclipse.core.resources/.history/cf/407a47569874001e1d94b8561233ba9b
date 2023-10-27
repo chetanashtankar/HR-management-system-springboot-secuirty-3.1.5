@@ -1,0 +1,47 @@
+package com.hms.te.serviceimpl;
+
+
+import java.util.Optional;
+
+import javax.management.relation.Role;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@RequiredArgsConstructor
+@Service
+public class EmployeeServiceImpl implements EmployeeService {
+
+	private final EmployeeRepository employeeRepository;
+	private final RoleRepository roleRepository;
+	private final AppUserRepository appUserRepository;
+	private final PasswordEncoder passwordEncoder;
+
+	@Override
+	public Optional<String> registerEmployee(EmployeeDto employeeDto) {
+		log.info("EmployeeServiceImpl:registerEmployee execution start, {}", employeeDto);
+		Employee employee = new Employee();
+		BeanUtils.copyProperties(employeeDto, employee);
+		log.debug("EmployeeServiceImpl:registerEmployee, employee entity object created {}", employee);
+		Optional<Roles> employeeRole = roleRepository.findByRoleName("ROLE_EMPLOYEE");
+		if (employeeRole.isPresent()) {
+			log.debug("EmployeeServiceImpl:registerEmployee, role found in database");
+			Roles roles = employeeRole.get();
+			AppUser appUser = AppUser.builder().username(employee.getEmployeeId())
+					.password(passwordEncoder.encode(employeeDto.getPassword())).roles(Lists.newArrayList()).build();
+			roles.getAppUsers().add(appUser);
+			appUser.getRoles().add(roles);
+			appUserRepository.save(appUser);
+			log.info("EmployeeServiceImpl:registerEmployee, registraction done");
+		}
+		log.info("EmployeeServiceImpl:registerEmployee returning the data");
+		return Optional.ofNullable(employeeRepository.save(employee).getEmployeeId());
+	}
+}

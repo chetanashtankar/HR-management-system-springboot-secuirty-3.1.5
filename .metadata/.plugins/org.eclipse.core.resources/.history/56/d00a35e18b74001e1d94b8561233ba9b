@@ -1,0 +1,35 @@
+package com.hms.te.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Table(name = "skill_tbl")
+@ToString
+@Entity
+public class Skill {
+	
+	/*
+	 * - Attributes: Skill ID, Skill Name, Skill Description.
+   - API endpoints for CRUD operations.
+
+	 */
+	
+	private int employeeSkillId;
+	private String employeeSkillName;
+	private String employeeSkillDescription;
+
+	
+	
+	
+
+}

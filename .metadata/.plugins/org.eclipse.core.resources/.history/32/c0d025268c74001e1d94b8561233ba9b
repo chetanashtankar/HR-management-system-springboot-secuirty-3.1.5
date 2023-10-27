@@ -1,0 +1,30 @@
+package com.hms.te.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Table(name = "training_tbl")
+@ToString
+@Entity
+public class TrainingProgram {
+
+	//Program ID, Program Name, Program Description, Start Date, End Date.
+	
+	@Id
+	private int employeeProgramId;
+	private String employeeProgramDescription;
+	private int employeeStartDate;
+	private int employeeEndDate;
+	
+
+}

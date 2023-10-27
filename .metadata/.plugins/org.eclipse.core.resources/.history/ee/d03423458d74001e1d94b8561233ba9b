@@ -1,0 +1,5 @@
+package com.hms.te.exceptionhandle;
+
+public class EmployeeExceptionHandle {
+
+}
