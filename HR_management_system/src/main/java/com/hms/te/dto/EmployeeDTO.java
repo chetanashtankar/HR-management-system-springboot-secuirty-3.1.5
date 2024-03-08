@@ -19,7 +19,7 @@ import lombok.ToString;
 @Builder
 public class EmployeeDTO {
 
-	@Id
+	
 	private String employeeId;
 	private String employeeFirstName;
 	private String employeeLastName;
